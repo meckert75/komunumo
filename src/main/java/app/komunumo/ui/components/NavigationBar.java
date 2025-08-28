@@ -17,6 +17,7 @@
  */
 package app.komunumo.ui.components;
 
+import app.komunumo.data.dto.ConfigurationSetting;
 import app.komunumo.data.service.ServiceProvider;
 import app.komunumo.ui.views.community.CommunityGridView;
 import app.komunumo.ui.views.events.EventGridView;
@@ -54,7 +55,7 @@ public final class NavigationBar extends HorizontalLayout {
         final var menuBar = new Nav();
         menuBar.addClassName("menu-bar");
         menuBar.add(new RouterLink(ui.getTranslation("events.title"), EventGridView.class));
-        if (!serviceProvider.getAppConfig().instance().hideCommunities()) {
+        if (!serviceProvider.configurationService().getConfigurationAsBoolean(ConfigurationSetting.INSTANCE_HIDE_COMMUNITIES)) {
             menuBar.add(new RouterLink(ui.getTranslation("communities.title"), CommunityGridView.class));
         }
         serviceProvider.globalPageService()

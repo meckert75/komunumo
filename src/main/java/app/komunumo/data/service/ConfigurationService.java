@@ -48,6 +48,10 @@ public final class ConfigurationService {
         return getConfiguration(setting, null);
     }
 
+    public @NotNull boolean getConfigurationAsBoolean(final @NotNull ConfigurationSetting setting) {
+        return Boolean.parseBoolean(getConfiguration(setting, null));
+    }
+
     public @NotNull String getConfiguration(final @NotNull ConfigurationSetting setting,
                                             final @Nullable Locale locale) {
         if (locale == null) {
